@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     Button next, info;
+    Button btn;
   TextView name, email, mobile;
     String json_url="http://192.168.1.107/getinfo.php";
     @Override
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         mobile = (TextView) findViewById(R.id.tv_mobile);
 
 
-        bt_info.setOnClickListener(new View.OnClickListener() {
+        info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, json_url,null,
@@ -43,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(JSONObject response) {
                                 try {
-                                    tv_name.setText(response.getString("Name"));
-                                    tv_mail.setText(response.getString("Email"));
-                                    tv_mobile.setText(response.getString("Mobile"));
+                                    name.setText(response.getString("Name"));
+                                    email.setText(response.getString("Email"));
+                                    mobile.setText(response.getString("Mobile"));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
